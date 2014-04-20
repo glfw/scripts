@@ -21,6 +21,7 @@ mkdir -p ${tag}/${srcdir}
 mkdir -p ${tag}/build
 
 mkdir -p ${tag}/${w32dir}/docs
+mkdir -p ${tag}/${w32dir}/lib-msvc100
 mkdir -p ${tag}/${w32dir}/lib-msvc110
 mkdir -p ${tag}/${w32dir}/lib-msvc120
 mkdir -p ${tag}/${w32dir}/lib-mingw
