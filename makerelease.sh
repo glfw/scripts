@@ -40,6 +40,8 @@ if ! ( git archive ${tag} | tar x -C ${tag}/${srcdir} ); then
   exit 1
 fi
 
+rm -f ${tag}/${srcdir}/.gitignore
+
 if ! ( cd ${tag}/build-docs && cmake ../${srcdir} ); then
   echo "${tag}: failed to configure project"
   exit 1
