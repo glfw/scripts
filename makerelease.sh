@@ -109,3 +109,9 @@ cp ${tag}/${srcdir}/COPYING.txt ${tag}/${w64dir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 
+cat > ${tag}/README.txt <<EOF
+This is version ${tag} of GLFW.
+
+This release 
+EOF
+
