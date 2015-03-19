@@ -1,10 +1,10 @@
 @echo off
 
-mkdir lib-vc2010\x86
-mkdir lib-vc2012\x86
-mkdir lib-vc2012\x64
-mkdir lib-vc2013\x86
-mkdir lib-vc2013\x64
+mkdir glfw-bin.WIN32\lib-vc2010
+mkdir glfw-bin.WIN32\lib-vc2012
+mkdir glfw-bin.WIN64\lib-vc2012
+mkdir glfw-bin.WIN32\lib-vc2013
+mkdir glfw-bin.WIN64\lib-vc2013
 
 mkdir build-vc2010-x86
 cd    build-vc2010-x86
@@ -17,9 +17,9 @@ nmake
 
 cd ..
 
-copy build-vc2010-x86\src\glfw3.lib    lib-vc2010\x86
-copy build-vc2010-x86\src\glfw3dll.lib lib-vc2010\x86
-copy build-vc2010-x86\src\glfw3.dll    lib-vc2010\x86
+copy build-vc2010-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2010
+copy build-vc2010-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2010
+copy build-vc2010-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2010
 
 mkdir build-vc2012-x86
 cd    build-vc2012-x86
@@ -32,9 +32,9 @@ nmake
 
 cd ..
 
-copy build-vc2012-x86\src\glfw3.lib    lib-vc2012\x86
-copy build-vc2012-x86\src\glfw3dll.lib lib-vc2012\x86
-copy build-vc2012-x86\src\glfw3.dll    lib-vc2012\x86
+copy build-vc2012-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2012
+copy build-vc2012-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2012
+copy build-vc2012-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2012
 
 mkdir build-vc2012-x64
 cd    build-vc2012-x64
@@ -47,9 +47,9 @@ nmake
 
 cd ..
 
-copy build-vc2012-x64\src\glfw3.lib    lib-vc2012\x64
-copy build-vc2012-x64\src\glfw3dll.lib lib-vc2012\x64
-copy build-vc2012-x64\src\glfw3.dll    lib-vc2012\x64
+copy build-vc2012-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2012
+copy build-vc2012-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2012
+copy build-vc2012-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2012
 
 mkdir build-vc2013-x86
 cd    build-vc2013-x86
@@ -62,9 +62,9 @@ nmake
 
 cd ..
 
-copy build-vc2013-x86\src\glfw3.lib    lib-vc2013\x86
-copy build-vc2013-x86\src\glfw3dll.lib lib-vc2013\x86
-copy build-vc2013-x86\src\glfw3.dll    lib-vc2013\x86
+copy build-vc2013-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2013
+copy build-vc2013-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2013
+copy build-vc2013-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2013
 
 mkdir build-vc2013-x64
 cd    build-vc2013-x64
@@ -77,7 +77,7 @@ nmake
 
 cd ..
 
-copy build-vc2013-x64\src\glfw3.lib    lib-vc2013\x64
-copy build-vc2013-x64\src\glfw3dll.lib lib-vc2013\x64
-copy build-vc2013-x64\src\glfw3.dll    lib-vc2013\x64
+copy build-vc2013-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2013
+copy build-vc2013-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2013
+copy build-vc2013-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2013
 
