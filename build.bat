@@ -9,6 +9,8 @@ mkdir glfw-bin.WIN32\lib-vc2012
 mkdir glfw-bin.WIN64\lib-vc2012
 mkdir glfw-bin.WIN32\lib-vc2013
 mkdir glfw-bin.WIN64\lib-vc2013
+mkdir glfw-bin.WIN32\lib-vc2015
+mkdir glfw-bin.WIN64\lib-vc2015
 
 mkdir build\vc2010-x86
 cd    build\vc2010-x86
@@ -84,4 +86,34 @@ cd ..\..
 copy build\vc2013-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2013
 copy build\vc2013-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2013
 copy build\vc2013-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2013
+
+mkdir build\vc2015-x86
+cd    build\vc2015-x86
+
+call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
+nmake
+%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
+nmake
+
+cd ..\..
+
+copy build\vc2015-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2015
+copy build\vc2015-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2015
+copy build\vc2015-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2015
+
+mkdir build\vc2015-x64
+cd    build\vc2015-x64
+
+call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
+%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
+nmake
+%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
+nmake
+
+cd ..\..
+
+copy build\vc2015-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2015
+copy build\vc2015-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2015
+copy build\vc2015-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2015
 
