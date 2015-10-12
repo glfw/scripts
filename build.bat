@@ -12,6 +12,8 @@ mkdir glfw-bin.WIN64\lib-vc2013
 mkdir glfw-bin.WIN32\lib-vc2015
 mkdir glfw-bin.WIN64\lib-vc2015
 
+rem Visual C++ 2010 32-bit
+
 mkdir build\vc2010-x86
 cd    build\vc2010-x86
 
@@ -26,6 +28,8 @@ cd ..\..
 copy build\vc2010-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2010
 copy build\vc2010-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2010
 copy build\vc2010-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2010
+
+rem Visual C++ 2012 32-bit
 
 mkdir build\vc2012-x86
 cd    build\vc2012-x86
@@ -42,6 +46,8 @@ copy build\vc2012-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2012
 copy build\vc2012-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2012
 copy build\vc2012-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2012
 
+rem Visual C++ 2012 64-bit
+
 mkdir build\vc2012-x64
 cd    build\vc2012-x64
 
@@ -56,6 +62,8 @@ cd ..\..
 copy build\vc2012-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2012
 copy build\vc2012-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2012
 copy build\vc2012-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2012
+
+rem Visual C++ 2013 32-bit
 
 mkdir build\vc2013-x86
 cd    build\vc2013-x86
@@ -72,6 +80,8 @@ copy build\vc2013-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2013
 copy build\vc2013-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2013
 copy build\vc2013-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2013
 
+rem Visual C++ 2013 64-bit
+
 mkdir build\vc2013-x64
 cd    build\vc2013-x64
 
@@ -87,6 +97,8 @@ copy build\vc2013-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2013
 copy build\vc2013-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2013
 copy build\vc2013-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2013
 
+rem Visual C++ 2015 32-bit
+
 mkdir build\vc2015-x86
 cd    build\vc2015-x86
 
@@ -101,6 +113,8 @@ cd ..\..
 copy build\vc2015-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2015
 copy build\vc2015-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2015
 copy build\vc2015-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2015
+
+rem Visual C++ 2015 64-bit
 
 mkdir build\vc2015-x64
 cd    build\vc2015-x64

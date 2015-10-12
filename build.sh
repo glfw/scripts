@@ -7,6 +7,8 @@ mkdir -p glfw-bin.WIN32/lib-mingw
 mkdir -p glfw-bin.WIN32/lib-mingw-w64
 mkdir -p glfw-bin.WIN64/lib-mingw-w64
 
+# MinGW 32-bit
+
 mkdir -p build/mingw-x86
 pushd    build/mingw-x86
 
@@ -20,6 +22,8 @@ popd
 cp build/mingw-x86/src/libglfw3.a glfw-bin.WIN32/lib-mingw
 cp build/mingw-x86/src/glfw3dll.a glfw-bin.WIN32/lib-mingw
 cp build/mingw-x86/src/glfw3.dll  glfw-bin.WIN32/lib-mingw
+
+# MinGW-w64 32-bit
 
 mkdir -p build/mingw-w64-x86
 pushd    build/mingw-w64-x86
@@ -35,6 +39,7 @@ cp build/mingw-w64-x86/src/libglfw3.a glfw-bin.WIN32/lib-mingw-w64
 cp build/mingw-w64-x86/src/glfw3dll.a glfw-bin.WIN32/lib-mingw-w64
 cp build/mingw-w64-x86/src/glfw3.dll  glfw-bin.WIN32/lib-mingw-w64
 
+# MinGW-w64 64-bit
 
 mkdir -p build/mingw-w64-x64
 pushd    build/mingw-w64-x64
@@ -49,6 +54,8 @@ popd
 cp build/mingw-w64-x64/src/libglfw3.a glfw-bin.WIN64/lib-mingw-w64
 cp build/mingw-w64-x64/src/glfw3dll.a glfw-bin.WIN64/lib-mingw-w64
 cp build/mingw-w64-x64/src/glfw3.dll  glfw-bin.WIN64/lib-mingw-w64
+
+# Visual C++
 
 cmd /c build.bat
 
