@@ -21,16 +21,9 @@ mkdir -p ${tag}/${srcdir}
 mkdir -p ${tag}/build-docs
 
 mkdir -p ${tag}/${w32dir}/docs
-mkdir -p ${tag}/${w32dir}/lib-vc2010
-mkdir -p ${tag}/${w32dir}/lib-vc2012
-mkdir -p ${tag}/${w32dir}/lib-vc2013
-mkdir -p ${tag}/${w32dir}/lib-mingw
 mkdir -p ${tag}/${w32dir}/include/GLFW
 
 mkdir -p ${tag}/${w64dir}/docs
-mkdir -p ${tag}/${w64dir}/lib-vc2012
-mkdir -p ${tag}/${w64dir}/lib-vc2013
-mkdir -p ${tag}/${w64dir}/lib-mingw
 mkdir -p ${tag}/${w64dir}/include/GLFW
 
 export GIT_DIR=../glfw/.git
