@@ -19,9 +19,9 @@ make
 
 popd
 
-cp build/mingw-x86/src/libglfw3.a glfw-bin.WIN32/lib-mingw
-cp build/mingw-x86/src/glfw3dll.a glfw-bin.WIN32/lib-mingw
-cp build/mingw-x86/src/glfw3.dll  glfw-bin.WIN32/lib-mingw
+cp build/mingw-x86/src/libglfw3.a    glfw-bin.WIN32/lib-mingw
+cp build/mingw-x86/src/libglfw3dll.a glfw-bin.WIN32/lib-mingw
+cp build/mingw-x86/src/glfw3.dll     glfw-bin.WIN32/lib-mingw
 
 # MinGW-w64 32-bit
 
@@ -35,9 +35,9 @@ make
 
 popd
 
-cp build/mingw-w64-x86/src/libglfw3.a glfw-bin.WIN32/lib-mingw-w64
-cp build/mingw-w64-x86/src/glfw3dll.a glfw-bin.WIN32/lib-mingw-w64
-cp build/mingw-w64-x86/src/glfw3.dll  glfw-bin.WIN32/lib-mingw-w64
+cp build/mingw-w64-x86/src/libglfw3.a    glfw-bin.WIN32/lib-mingw-w64
+cp build/mingw-w64-x86/src/libglfw3dll.a glfw-bin.WIN32/lib-mingw-w64
+cp build/mingw-w64-x86/src/glfw3.dll     glfw-bin.WIN32/lib-mingw-w64
 
 # MinGW-w64 64-bit
 
@@ -51,9 +51,9 @@ make
 
 popd
 
-cp build/mingw-w64-x64/src/libglfw3.a glfw-bin.WIN64/lib-mingw-w64
-cp build/mingw-w64-x64/src/glfw3dll.a glfw-bin.WIN64/lib-mingw-w64
-cp build/mingw-w64-x64/src/glfw3.dll  glfw-bin.WIN64/lib-mingw-w64
+cp build/mingw-w64-x64/src/libglfw3.a    glfw-bin.WIN64/lib-mingw-w64
+cp build/mingw-w64-x64/src/libglfw3dll.a glfw-bin.WIN64/lib-mingw-w64
+cp build/mingw-w64-x64/src/glfw3.dll     glfw-bin.WIN64/lib-mingw-w64
 
 # Visual C++
 
