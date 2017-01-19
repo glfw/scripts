@@ -1,6 +1,6 @@
 @echo off
 
-set CMAKE="C:\Program Files (x86)\CMake\bin\cmake.exe"
+set CMAKE="C:\Program Files\CMake\bin\cmake.exe"
 set OPTIONS=-G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
 set GLFWDIR=..\..\..\glfw
 
