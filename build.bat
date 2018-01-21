@@ -138,7 +138,7 @@ rem Visual C++ 2017 32-bit
 mkdir build\vc2017-x86
 cd    build\vc2017-x86
 
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
+call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
 %CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
 nmake
 %CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
