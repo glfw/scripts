@@ -1,169 +1,98 @@
 @echo off
 
-set CMAKE="C:\Program Files\CMake\bin\cmake.exe"
-set OPTIONS=-G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
-set GLFWDIR=..\..\..\glfw
-
-mkdir glfw-bin.WIN32\lib-vc2010
-mkdir glfw-bin.WIN32\lib-vc2012
-mkdir glfw-bin.WIN64\lib-vc2012
-mkdir glfw-bin.WIN32\lib-vc2013
-mkdir glfw-bin.WIN64\lib-vc2013
-mkdir glfw-bin.WIN32\lib-vc2015
-mkdir glfw-bin.WIN64\lib-vc2015
-mkdir glfw-bin.WIN32\lib-vc2017
-mkdir glfw-bin.WIN64\lib-vc2017
+set COMMON=-DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
+set SHARED=%COMMON% -DBUILD_SHARED_LIBS=YES
+set STATIC=%COMMON% -DBUILD_SHARED_LIBS=NO
+set GLFWDIR="..\..\..\glfw"
 
 rem Visual C++ 2010 32-bit
-
-mkdir build\vc2010-x86
-cd    build\vc2010-x86
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2010-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2010
-copy build\vc2010-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2010
-copy build\vc2010-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2010
+set GENERATOR="Visual Studio 10 2010"
+set ARCH="Win32"
+set BUILDDIR="build\vc2010-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2010"
+call :build
 
 rem Visual C++ 2012 32-bit
-
-mkdir build\vc2012-x86
-cd    build\vc2012-x86
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2012-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2012
-copy build\vc2012-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2012
-copy build\vc2012-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2012
+set GENERATOR="Visual Studio 11 2012"
+set ARCH="Win32"
+set BUILDDIR="build\vc2012-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2012"
+call :build
 
 rem Visual C++ 2012 64-bit
-
-mkdir build\vc2012-x64
-cd    build\vc2012-x64
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86_amd64
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2012-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2012
-copy build\vc2012-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2012
-copy build\vc2012-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2012
+set GENERATOR="Visual Studio 11 2012"
+set ARCH="x64"
+set BUILDDIR="build\vc2012-x64"
+set TARGETDIR="glfw-bin.WIN64\lib-vc2012"
+call :build
 
 rem Visual C++ 2013 32-bit
-
-mkdir build\vc2013-x86
-cd    build\vc2013-x86
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2013-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2013
-copy build\vc2013-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2013
-copy build\vc2013-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2013
+set GENERATOR="Visual Studio 12 2013"
+set ARCH="Win32"
+set BUILDDIR="build\vc2013-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2013"
+call :build
 
 rem Visual C++ 2013 64-bit
-
-mkdir build\vc2013-x64
-cd    build\vc2013-x64
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2013-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2013
-copy build\vc2013-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2013
-copy build\vc2013-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2013
+set GENERATOR="Visual Studio 12 2013"
+set ARCH="x64"
+set BUILDDIR="build\vc2013-x64"
+set TARGETDIR="glfw-bin.WIN64\lib-vc2013"
+call :build
 
 rem Visual C++ 2015 32-bit
-
-mkdir build\vc2015-x86
-cd    build\vc2015-x86
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2015-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2015
-copy build\vc2015-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2015
-copy build\vc2015-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2015
+set GENERATOR="Visual Studio 14 2015"
+set ARCH="Win32"
+set BUILDDIR="build\vc2015-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2015"
+call :build
 
 rem Visual C++ 2015 64-bit
-
-mkdir build\vc2015-x64
-cd    build\vc2015-x64
-
-call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2015-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2015
-copy build\vc2015-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2015
-copy build\vc2015-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2015
+set GENERATOR="Visual Studio 14 2015"
+set ARCH="x64"
+set BUILDDIR="build\vc2015-x64"
+set TARGETDIR="glfw-bin.WIN64\lib-vc2015"
+call :build
 
 rem Visual C++ 2017 32-bit
-
-mkdir build\vc2017-x86
-cd    build\vc2017-x86
-
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
-
-cd ..\..
-
-copy build\vc2017-x86\src\glfw3.lib    glfw-bin.WIN32\lib-vc2017
-copy build\vc2017-x86\src\glfw3dll.lib glfw-bin.WIN32\lib-vc2017
-copy build\vc2017-x86\src\glfw3.dll    glfw-bin.WIN32\lib-vc2017
+set GENERATOR="Visual Studio 15 2017"
+set ARCH="Win32"
+set BUILDDIR="build\vc2017-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2017"
+call :build
 
 rem Visual C++ 2017 64-bit
+set GENERATOR="Visual Studio 15 2017"
+set ARCH="x64"
+set BUILDDIR="build\vc2017-x64"
+set TARGETDIR="glfw-bin.WIN64\lib-vc2017"
+call :build
 
-mkdir build\vc2017-x64
-cd    build\vc2017-x64
+rem Visual C++ 2019 32-bit
+set GENERATOR="Visual Studio 16 2019"
+set ARCH="Win32"
+set BUILDDIR="build\vc2019-x86"
+set TARGETDIR="glfw-bin.WIN32\lib-vc2019"
+call :build
 
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=NO %GLFWDIR%
-nmake
-%CMAKE% %OPTIONS% -DBUILD_SHARED_LIBS=YES %GLFWDIR%
-nmake
+rem Visual C++ 2019 64-bit
+set GENERATOR="Visual Studio 16 2019"
+set ARCH="x64"
+set BUILDDIR="build\vc2019-x64"
+set TARGETDIR="glfw-bin.WIN64\lib-vc2019"
+call :build
 
-cd ..\..
+exit /b 0
 
-copy build\vc2017-x64\src\glfw3.lib    glfw-bin.WIN64\lib-vc2017
-copy build\vc2017-x64\src\glfw3dll.lib glfw-bin.WIN64\lib-vc2017
-copy build\vc2017-x64\src\glfw3.dll    glfw-bin.WIN64\lib-vc2017
+:build
+cmake -E make_directory %BUILDDIR%
+cmake -E make_directory %TARGETDIR%
+cmake -E chdir %BUILDDIR% cmake -G %GENERATOR% -A %ARCH% %STATIC% %GLFWDIR%
+cmake --build %BUILDDIR% --config Release
+cmake -E chdir %BUILDDIR% cmake %SHARED% %GLFWDIR%
+cmake --build %BUILDDIR% --config Release
+cmake -E copy %BUILDDIR%\src\Release\glfw3.lib    %TARGETDIR%
+cmake -E copy %BUILDDIR%\src\Release\glfw3dll.lib %TARGETDIR%
+cmake -E copy %BUILDDIR%\src\Release\glfw3.dll    %TARGETDIR%
+exit /b 0
 

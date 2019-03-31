@@ -1,61 +1,33 @@
 #!/bin/sh
 
-OPTIONS='-DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO'
+COMMON="-GNinja -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO -DCMAKE_C_FLAGS=-s"
+SHARED="$COMMON -DBUILD_SHARED_LIBS=YES"
+STATIC="$COMMON -DBUILD_SHARED_LIBS=NO"
 GLFWDIR='../../../glfw'
 
-mkdir -p glfw-bin.WIN32/lib-mingw
-mkdir -p glfw-bin.WIN32/lib-mingw-w64
-mkdir -p glfw-bin.WIN64/lib-mingw-w64
+build()
+{
+    cmake -E make_directory $BUILDDIR
+    cmake -E chdir $BUILDDIR cmake -DCMAKE_TOOLCHAIN_FILE=$TOOLPATH $STATIC $GLFWDIR
+    cmake --build $BUILDDIR
+    cmake -E chdir $BUILDDIR cmake $SHARED $GLFWDIR
+    cmake --build $BUILDDIR
 
-# MinGW 32-bit
-
-mkdir -p build/mingw-x86
-pushd    build/mingw-x86
-
-cmake -DCMAKE_TOOLCHAIN_FILE=$GLFWDIR/CMake/i686-pc-mingw32.cmake $OPTIONS -DBUILD_SHARED_LIBS=NO $GLFWDIR
-make
-cmake $OPTIONS -DBUILD_SHARED_LIBS=YES $GLFWDIR
-make
-
-popd
-
-cp build/mingw-x86/src/libglfw3.a    glfw-bin.WIN32/lib-mingw
-cp build/mingw-x86/src/libglfw3dll.a glfw-bin.WIN32/lib-mingw
-cp build/mingw-x86/src/glfw3.dll     glfw-bin.WIN32/lib-mingw
+    cmake -E make_directory $TARGETDIR
+    cmake -E copy $BUILDDIR/src/libglfw3.a    $TARGETDIR
+    cmake -E copy $BUILDDIR/src/libglfw3dll.a $TARGETDIR
+    cmake -E copy $BUILDDIR/src/glfw3.dll     $TARGETDIR
+}
 
 # MinGW-w64 32-bit
-
-mkdir -p build/mingw-w64-x86
-pushd    build/mingw-w64-x86
-
-cmake -DCMAKE_TOOLCHAIN_FILE=$GLFWDIR/CMake/i686-w64-mingw32.cmake $OPTIONS -DBUILD_SHARED_LIBS=NO $GLFWDIR
-make
-cmake $OPTIONS -DBUILD_SHARED_LIBS=YES $GLFWDIR
-make
-
-popd
-
-cp build/mingw-w64-x86/src/libglfw3.a    glfw-bin.WIN32/lib-mingw-w64
-cp build/mingw-w64-x86/src/libglfw3dll.a glfw-bin.WIN32/lib-mingw-w64
-cp build/mingw-w64-x86/src/glfw3.dll     glfw-bin.WIN32/lib-mingw-w64
+TOOLPATH="$GLFWDIR/CMake/i686-w64-mingw32.cmake"
+BUILDDIR="build/mingw-w64-x86"
+TARGETDIR="glfw-bin.WIN32/lib-mingw-w64"
+build
 
 # MinGW-w64 64-bit
-
-mkdir -p build/mingw-w64-x64
-pushd    build/mingw-w64-x64
-
-cmake -DCMAKE_TOOLCHAIN_FILE=$GLFWDIR/CMake/x86_64-w64-mingw32.cmake $OPTIONS -DBUILD_SHARED_LIBS=NO $GLFWDIR
-make
-cmake $OPTIONS -DBUILD_SHARED_LIBS=YES $GLFWDIR
-make
-
-popd
-
-cp build/mingw-w64-x64/src/libglfw3.a    glfw-bin.WIN64/lib-mingw-w64
-cp build/mingw-w64-x64/src/libglfw3dll.a glfw-bin.WIN64/lib-mingw-w64
-cp build/mingw-w64-x64/src/glfw3.dll     glfw-bin.WIN64/lib-mingw-w64
-
-# Visual C++
-
-cmd /c build.bat
+TOOLPATH="$GLFWDIR/CMake/x86_64-w64-mingw32.cmake"
+BUILDDIR="build/mingw-w64-x64"
+TARGETDIR="glfw-bin.WIN64/lib-mingw-w64"
+build
 
