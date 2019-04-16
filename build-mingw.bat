@@ -13,9 +13,9 @@ set TARGETDIR="glfw-bin.WIN32\lib-mingw"
 cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
 cmake -S %GLFWDIR% -B %BUILDDIR% -G %GENERATOR% %STATIC%
-cmake --build %BUILDDIR% --config Release
+cmake --build %BUILDDIR%
 cmake -S %GLFWDIR% -B %BUILDDIR% %SHARED%
-cmake --build %BUILDDIR% --config Release
+cmake --build %BUILDDIR%
 cmake -E copy %BUILDDIR%\src\libglfw3.a    %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\libglfw3dll.a %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\glfw3.dll     %TARGETDIR%
