@@ -41,12 +41,12 @@ fi
 
 rm -f ${tag}/${srcdir}/.[a-z]*
 
-if ! ( cd ${tag}/build-docs && cmake ../${srcdir} ); then
+if ! cmake -S ${tag}/${srcdir} -B ${tag}/build-docs; then
   echo "${tag}: failed to configure project"
   exit 1
 fi
 
-if ! make -C ${tag}/build-docs docs; then
+if ! cmake --build ${tag}/build-docs --target docs; then
   echo "${tag}: failed to build documentation"
   exit 1
 fi
