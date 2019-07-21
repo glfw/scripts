@@ -41,7 +41,7 @@ if ! ( git archive ${tag} | tar x -C ${tag}/${srcdir} ); then
   exit 1
 fi
 
-rm -f ${tag}/${srcdir}/.gitignore
+rm -f ${tag}/${srcdir}/.[a-z]*
 
 if ! ( cd ${tag}/build-docs && cmake ../${srcdir} ); then
   echo "${tag}: failed to configure project"
@@ -102,13 +102,13 @@ cp -R ${tag}/build-docs/docs/html ${tag}/${srcdir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w32dir}/include/GLFW/
-cp ${tag}/${srcdir}/COPYING.txt ${tag}/${w32dir}/
+cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w32dir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w32dir}/docs/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w32dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w64dir}/include/GLFW/
-cp ${tag}/${srcdir}/COPYING.txt ${tag}/${w64dir}/
+cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w64dir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 
