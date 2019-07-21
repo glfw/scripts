@@ -102,7 +102,7 @@ exit /b 0
 :build
 cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
-cmake -S %GLFWDIR% -B %BUILDDIR% -G %GENERATOR% -A %ARCH% -T %TOOLSET% %STATIC%
+cmake -S "%GLFWDIR%" -B %BUILDDIR% -G %GENERATOR% -A %ARCH% -T %TOOLSET% %STATIC%
 cmake --build %BUILDDIR% --config Release
 cmake %SHARED% %BUILDDIR%
 cmake --build %BUILDDIR% --config Release

@@ -22,7 +22,7 @@ build()
 {
     cmake -E make_directory $BUILDDIR
     cmake -E make_directory $TARGETDIR
-    cmake -S $GLFWDIR -B $BUILDDIR $STATIC
+    cmake -S "$GLFWDIR" -B $BUILDDIR $STATIC
     cmake --build $BUILDDIR
     cmake $SHARED $BUILDDIR
     cmake --build $BUILDDIR

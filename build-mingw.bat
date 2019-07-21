@@ -16,7 +16,7 @@ set TARGETDIR="glfw-%GLFWVER%.bin.WIN32\lib-mingw"
 
 cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
-cmake -S %GLFWDIR% -B %BUILDDIR% -G %GENERATOR% %STATIC%
+cmake -S "%GLFWDIR%" -B %BUILDDIR% -G %GENERATOR% %STATIC%
 cmake --build %BUILDDIR%
 cmake %SHARED% %BUILDDIR%
 cmake --build %BUILDDIR%
