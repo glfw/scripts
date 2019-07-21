@@ -55,6 +55,8 @@ if ! cmake --build ${tag}/build/docs --target docs; then
     exit 1
 fi
 
+cp build-macos.sh build-mingw.bat build-mingw-w64.sh build-vs.bat ${tag}/
+
 cat > ${tag}/makepackages.sh <<EOF
 #!/bin/bash
 
