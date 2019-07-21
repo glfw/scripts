@@ -15,7 +15,7 @@ if [ -z "${tag}" ]; then
   exit 1
 fi
 
-if [ -a ${tag} ]; then
+if [ -e ${tag} ]; then
   echo "$(basename $0): ${tag}: tree already exists"
   exit 1
 fi
