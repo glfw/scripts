@@ -124,9 +124,3 @@ cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${macdir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${macdir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${macdir}/docs/
 
-cat > ${tag}/README.txt <<EOF
-This is version ${tag} of GLFW.
-
-This release 
-EOF
-
