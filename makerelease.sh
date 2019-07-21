@@ -4,20 +4,20 @@ dir="$1"
 tag="$2"
 
 if [ ! -d "${dir}" ]; then
-  echo "${dir}: Directory not found"
-  echo "Usage: $(basename $0) <glfwpath> <version>"
-  exit 1
+    echo "${dir}: Directory not found"
+    echo "Usage: $(basename $0) <glfwpath> <version>"
+    exit 1
 fi
 
 if [ -z "${tag}" ]; then
-  echo "No version specified"
-  echo "Usage: $(basename $0) <glfwpath> <version>"
-  exit 1
+    echo "No version specified"
+    echo "Usage: $(basename $0) <glfwpath> <version>"
+    exit 1
 fi
 
 if [ -e ${tag} ]; then
-  echo "$(basename $0): ${tag}: tree already exists"
-  exit 1
+    echo "$(basename $0): ${tag}: tree already exists"
+    exit 1
 fi
 
 srcdir=glfw-${tag}
@@ -39,20 +39,20 @@ mkdir -p ${tag}/${macdir}/docs
 mkdir -p ${tag}/${macdir}/include/GLFW
 
 if ! ( git archive --remote "${dir}/.git" ${tag} | tar x -C ${tag}/${srcdir} ); then
-  echo "${tag}: failed to export source tree"
-  exit 1
+    echo "${tag}: failed to export source tree"
+    exit 1
 fi
 
 rm -f ${tag}/${srcdir}/.[a-z]*
 
 if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs; then
-  echo "${tag}: failed to configure project"
-  exit 1
+    echo "${tag}: failed to configure project"
+    exit 1
 fi
 
 if ! cmake --build ${tag}/build/docs --target docs; then
-  echo "${tag}: failed to build documentation"
-  exit 1
+    echo "${tag}: failed to build documentation"
+    exit 1
 fi
 
 cat > ${tag}/makepackages.sh <<EOF
@@ -76,33 +76,33 @@ for dir in ${srcdir} ${w32dir} ${w64dir} ${macdir}; do
 done
 
 if ! tar -czf \$target_src_gz ${srcdir}; then
-  echo "\${target_src_gz}: failed to create package"
-  exit 1
+    echo "\${target_src_gz}: failed to create package"
+    exit 1
 fi
 
 if ! tar -cjf \$target_src_bz2 ${srcdir}; then
-  echo "\${target_src_bz2}: failed to create package"
-  exit 1
+    echo "\${target_src_bz2}: failed to create package"
+    exit 1
 fi
 
 if ! zip -rq \$target_src_zip ${srcdir}; then
-  echo "\${target_src_zip}: failed to create package"
-  exit 1
+    echo "\${target_src_zip}: failed to create package"
+    exit 1
 fi
 
 if ! zip -rq \$target_bin_WIN32 ${w32dir}; then
-  echo "\${target_bin_WIN32}: failed to create package"
-  exit 1
+    echo "\${target_bin_WIN32}: failed to create package"
+    exit 1
 fi
 
 if ! zip -rq \$target_bin_WIN64 ${w64dir}; then
-  echo "\${target_bin_WIN64}: failed to create package"
-  exit 1
+    echo "\${target_bin_WIN64}: failed to create package"
+    exit 1
 fi
 
 if ! zip -rq \$target_bin_MACOS ${macdir}; then
-  echo "\${target_bin_MACOS}: failed to create package"
-  exit 1
+    echo "\${target_bin_MACOS}: failed to create package"
+    exit 1
 fi
 EOF
 chmod +x ${tag}/makepackages.sh
