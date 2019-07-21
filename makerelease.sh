@@ -34,9 +34,7 @@ mkdir -p ${tag}/${w32dir}/include/GLFW
 mkdir -p ${tag}/${w64dir}/docs
 mkdir -p ${tag}/${w64dir}/include/GLFW
 
-export GIT_DIR="${dir}/.git"
-
-if ! ( git archive ${tag} | tar x -C ${tag}/${srcdir} ); then
+if ! ( git archive --remote "${dir}/.git" ${tag} | tar x -C ${tag}/${srcdir} ); then
   echo "${tag}: failed to export source tree"
   exit 1
 fi
