@@ -23,6 +23,7 @@ fi
 srcdir=glfw-${tag}
 w32dir=glfw-${tag}.bin.WIN32
 w64dir=glfw-${tag}.bin.WIN64
+macdir=glfw-${tag}.bin.MACOS
 
 mkdir -p ${tag}/${srcdir}
 
@@ -33,6 +34,9 @@ mkdir -p ${tag}/${w32dir}/include/GLFW
 
 mkdir -p ${tag}/${w64dir}/docs
 mkdir -p ${tag}/${w64dir}/include/GLFW
+
+mkdir -p ${tag}/${macdir}/docs
+mkdir -p ${tag}/${macdir}/include/GLFW
 
 if ! ( git archive --remote "${dir}/.git" ${tag} | tar x -C ${tag}/${srcdir} ); then
   echo "${tag}: failed to export source tree"
@@ -59,12 +63,14 @@ target_src_bz2=glfw-${tag}.tar.bz2
 target_src_zip=glfw-${tag}.zip
 target_bin_WIN32=glfw-${tag}.bin.WIN32.zip
 target_bin_WIN64=glfw-${tag}.bin.WIN64.zip
+target_bin_MACOS=glfw-${tag}.bin.MACOS.zip
 
 rm -f \$target_src_gz \$target_src_bz2 \$target_src_zip
 rm -f \$target_bin_WIN32
 rm -f \$target_bin_WIN64
+rm -f \$target_bin_MACOS
 
-for dir in ${srcdir} ${w32dir} ${w64dir}; do
+for dir in ${srcdir} ${w32dir} ${w64dir} ${macdir}; do
     find \${dir} -name '*.swo' -o -name '*.swp' -exec rm {} \;
     chmod -R -x+X \${dir}
 done
@@ -93,6 +99,11 @@ if ! zip -rq \$target_bin_WIN64 ${w64dir}; then
   echo "\${target_bin_WIN64}: failed to create package"
   exit 1
 fi
+
+if ! zip -rq \$target_bin_MACOS ${macdir}; then
+  echo "\${target_bin_MACOS}: failed to create package"
+  exit 1
+fi
 EOF
 chmod +x ${tag}/makepackages.sh
 
@@ -107,6 +118,11 @@ cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w64dir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
+
+cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${macdir}/include/GLFW/
+cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${macdir}/include/GLFW/
+cp ${tag}/${srcdir}/LICENSE.md ${tag}/${macdir}/
+cp -R ${tag}/build-docs/docs/html ${tag}/${macdir}/docs/
 
 cat > ${tag}/README.txt <<EOF
 This is version ${tag} of GLFW.
