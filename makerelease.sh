@@ -1,14 +1,22 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-  echo "Usage: `basename $0` <tag>"
+dir="$1"
+tag="$2"
+
+if [ ! -d "${dir}" ]; then
+  echo "${dir}: Directory not found"
+  echo "Usage: $(basename $0) <glfwpath> <version>"
   exit 1
 fi
 
-tag="$1"
+if [ -z "${tag}" ]; then
+  echo "No version specified"
+  echo "Usage: $(basename $0) <glfwpath> <version>"
+  exit 1
+fi
 
 if [ -a ${tag} ]; then
-  echo "`basename $0`: ${tag}: tree already exists"
+  echo "$(basename $0): ${tag}: tree already exists"
   exit 1
 fi
 
@@ -26,7 +34,7 @@ mkdir -p ${tag}/${w32dir}/include/GLFW
 mkdir -p ${tag}/${w64dir}/docs
 mkdir -p ${tag}/${w64dir}/include/GLFW
 
-export GIT_DIR=../glfw/.git
+export GIT_DIR="${dir}/.git"
 
 if ! ( git archive ${tag} | tar x -C ${tag}/${srcdir} ); then
   echo "${tag}: failed to export source tree"
