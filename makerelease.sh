@@ -102,12 +102,10 @@ cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w32dir}/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w32dir}/docs/
-cp -R ${tag}/build-docs/docs/html ${tag}/${w32dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w64dir}/
-cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
 
 cat > ${tag}/README.txt <<EOF
