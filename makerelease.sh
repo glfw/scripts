@@ -27,7 +27,7 @@ macdir=glfw-${tag}.bin.MACOS
 
 mkdir -p ${tag}/${srcdir}
 
-mkdir -p ${tag}/build-docs
+mkdir -p ${tag}/build/docs
 
 mkdir -p ${tag}/${w32dir}/docs
 mkdir -p ${tag}/${w32dir}/include/GLFW
@@ -45,12 +45,12 @@ fi
 
 rm -f ${tag}/${srcdir}/.[a-z]*
 
-if ! cmake -S ${tag}/${srcdir} -B ${tag}/build-docs; then
+if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs; then
   echo "${tag}: failed to configure project"
   exit 1
 fi
 
-if ! cmake --build ${tag}/build-docs --target docs; then
+if ! cmake --build ${tag}/build/docs --target docs; then
   echo "${tag}: failed to build documentation"
   exit 1
 fi
@@ -107,20 +107,20 @@ fi
 EOF
 chmod +x ${tag}/makepackages.sh
 
-cp -R ${tag}/build-docs/docs/html ${tag}/${srcdir}/docs/
+cp -R ${tag}/build/docs/docs/html ${tag}/${srcdir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w32dir}/
-cp -R ${tag}/build-docs/docs/html ${tag}/${w32dir}/docs/
+cp -R ${tag}/build/docs/docs/html ${tag}/${w32dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w64dir}/
-cp -R ${tag}/build-docs/docs/html ${tag}/${w64dir}/docs/
+cp -R ${tag}/build/docs/docs/html ${tag}/${w64dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${macdir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${macdir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${macdir}/
-cp -R ${tag}/build-docs/docs/html ${tag}/${macdir}/docs/
+cp -R ${tag}/build/docs/docs/html ${tag}/${macdir}/docs/
 
