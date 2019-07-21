@@ -14,7 +14,7 @@ cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
 cmake -S %GLFWDIR% -B %BUILDDIR% -G %GENERATOR% %STATIC%
 cmake --build %BUILDDIR%
-cmake -S %GLFWDIR% -B %BUILDDIR% %SHARED%
+cmake %SHARED% %BUILDDIR%
 cmake --build %BUILDDIR%
 cmake -E copy %BUILDDIR%\src\libglfw3.a    %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\libglfw3dll.a %TARGETDIR%

@@ -100,7 +100,7 @@ cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
 cmake -S %GLFWDIR% -B %BUILDDIR% -G %GENERATOR% -A %ARCH% -T %TOOLSET% %STATIC%
 cmake --build %BUILDDIR% --config Release
-cmake -S %GLFWDIR% -B %BUILDDIR% %SHARED%
+cmake %SHARED% %BUILDDIR%
 cmake --build %BUILDDIR% --config Release
 cmake -E copy %BUILDDIR%\src\Release\glfw3.lib    %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\Release\glfw3dll.lib %TARGETDIR%
