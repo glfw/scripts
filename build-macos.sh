@@ -22,7 +22,7 @@ build()
 {
     cmake -E make_directory $BUILDDIR
     cmake -E make_directory $TARGETDIR
-    cmake -S "$GLFWDIR" -B $BUILDDIR $STATIC
+    cmake -S "$GLFWDIR" -B $BUILDDIR $STATIC -DCMAKE_OSX_ARCHITECTURES=$ARCHS
     cmake --build $BUILDDIR
     cmake $SHARED $BUILDDIR
     cmake --build $BUILDDIR
@@ -30,8 +30,21 @@ build()
     cmake -E copy $BUILDDIR/src/libglfw.3.dylib $TARGETDIR
 }
 
-# macOS 64-bit
-BUILDDIR="build/macos"
-TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-macos"
+# macOS x86_64
+BUILDDIR="build/macos-x86_64"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-x86_64"
+ARCHS="x86_64"
+build
+
+# macOS arm64
+BUILDDIR="build/macos-arm64"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-arm64"
+ARCHS="arm64"
+build
+
+# macOS x86_64/arm64 Universal
+BUILDDIR="build/macos-universal"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-universal"
+ARCHS="x86_64;arm64"
 build
 
