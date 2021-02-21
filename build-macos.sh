@@ -18,33 +18,44 @@ if [ -z "$GLFWVER" ]; then
     exit 1
 fi
 
-build()
+build_static()
 {
+    BUILDDIR="build/macos-$ARCHNAME-static"
     cmake -E make_directory $BUILDDIR
     cmake -E make_directory $TARGETDIR
-    cmake -S "$GLFWDIR" -B $BUILDDIR $STATIC -DCMAKE_OSX_ARCHITECTURES=$ARCHS
+    cmake -S "$GLFWDIR" -B $BUILDDIR -DCMAKE_OSX_ARCHITECTURES=$ARCHS $STATIC
     cmake --build $BUILDDIR
-    cmake $SHARED $BUILDDIR
+    cmake -E copy $BUILDDIR/src/libglfw3.a $TARGETDIR
+}
+
+build_dynamic()
+{
+    BUILDDIR="build/macos-$ARCHNAME-dynamic"
+    cmake -E make_directory $BUILDDIR
+    cmake -E make_directory $TARGETDIR
+    cmake -S "$GLFWDIR" -B $BUILDDIR -DCMAKE_OSX_ARCHITECTURES=$ARCHS $SHARED
     cmake --build $BUILDDIR
-    cmake -E copy $BUILDDIR/src/libglfw3.a      $TARGETDIR
     cmake -E copy $BUILDDIR/src/libglfw.3.dylib $TARGETDIR
 }
 
 # macOS x86_64
-BUILDDIR="build/macos-x86_64"
-TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-x86_64"
+ARCHNAME="x86_64"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-$ARCHNAME"
 ARCHS="x86_64"
-build
+build_static
+build_dynamic
 
 # macOS arm64
-BUILDDIR="build/macos-arm64"
-TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-arm64"
+ARCHNAME="arm64"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-$ARCHNAME"
 ARCHS="arm64"
-build
+build_static
+build_dynamic
 
 # macOS x86_64/arm64 Universal
-BUILDDIR="build/macos-universal"
-TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-universal"
+ARCHNAME="universal"
+TARGETDIR="glfw-$GLFWVER.bin.MACOS/lib-$ARCHNAME"
 ARCHS="x86_64;arm64"
-build
+build_static
+build_dynamic
 

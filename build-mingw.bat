@@ -9,18 +9,21 @@ set GLFWVER="%2"
 if "%GLFWVER%" EQU "" exit /b 1
 if not exist "%GLFWDIR%" exit /b 1
 
-rem MinGW
 set GENERATOR="MinGW Makefiles"
-set BUILDDIR="build\mingw-x86"
 set TARGETDIR="glfw-%GLFWVER%.bin.WIN32\lib-mingw"
 
+set BUILDDIR="build\mingw-static"
 cmake -E make_directory %BUILDDIR%
 cmake -E make_directory %TARGETDIR%
 cmake -S "%GLFWDIR%" -B %BUILDDIR% -G %GENERATOR% %STATIC%
 cmake --build %BUILDDIR%
-cmake %SHARED% %BUILDDIR%
+cmake -E copy %BUILDDIR%\src\libglfw3.a %TARGETDIR%
+
+set BUILDDIR="build\mingw-dll"
+cmake -E make_directory %BUILDDIR%
+cmake -E make_directory %TARGETDIR%
+cmake -S "%GLFWDIR%" -B %BUILDDIR% -G %GENERATOR% %SHARED%
 cmake --build %BUILDDIR%
-cmake -E copy %BUILDDIR%\src\libglfw3.a    %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\libglfw3dll.a %TARGETDIR%
 cmake -E copy %BUILDDIR%\src\glfw3.dll     %TARGETDIR%
 

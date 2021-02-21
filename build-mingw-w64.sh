@@ -18,28 +18,38 @@ if [ -z "$GLFWVER" ]; then
     exit 1
 fi
 
-build()
+build_static()
 {
+    BUILDDIR="build/mingw-$TOOLCHAIN-static"
+    TOOLPATH="CMake/$TOOLCHAIN.cmake"
     cmake -E make_directory $BUILDDIR
     cmake -E make_directory $TARGETDIR
     cmake -S "$GLFWDIR" -B $BUILDDIR -DCMAKE_TOOLCHAIN_FILE=$TOOLPATH $STATIC
     cmake --build $BUILDDIR
-    cmake $SHARED $BUILDDIR
+    cmake -E copy $BUILDDIR/src/libglfw3.a $TARGETDIR
+}
+
+build_dll()
+{
+    BUILDDIR="build/mingw-$TOOLCHAIN-dll"
+    TOOLPATH="CMake/$TOOLCHAIN.cmake"
+    cmake -E make_directory $BUILDDIR
+    cmake -E make_directory $TARGETDIR
+    cmake -S "$GLFWDIR" -B $BUILDDIR -DCMAKE_TOOLCHAIN_FILE=$TOOLPATH $SHARED
     cmake --build $BUILDDIR
-    cmake -E copy $BUILDDIR/src/libglfw3.a    $TARGETDIR
-    cmake -E copy $BUILDDIR/src/libglfw3dll.a $TARGETDIR
     cmake -E copy $BUILDDIR/src/glfw3.dll     $TARGETDIR
+    cmake -E copy $BUILDDIR/src/libglfw3dll.a $TARGETDIR
 }
 
 # MinGW-w64 32-bit
-TOOLPATH="CMake/i686-w64-mingw32.cmake"
-BUILDDIR="build/mingw-w64-x86"
+TOOLCHAIN="i686-w64-mingw32"
 TARGETDIR="glfw-$GLFWVER.bin.WIN32/lib-mingw-w64"
-build
+build_static
+build_dll
 
 # MinGW-w64 64-bit
-TOOLPATH="CMake/x86_64-w64-mingw32.cmake"
-BUILDDIR="build/mingw-w64-x64"
+TOOLCHAIN="x86_64-w64-mingw32"
 TARGETDIR="glfw-$GLFWVER.bin.WIN64/lib-mingw-w64"
-build
+build_static
+build_dll
 
