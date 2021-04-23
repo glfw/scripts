@@ -125,13 +125,13 @@ import libraries and DLLs for GLFW ${tag}.
 
 Binaries for the following compilers are included
 
- - Visual C++ 2019 (version 16.8.6)
- - Visual C++ 2017 (version 15.9.33)
+ - Visual C++ 2019 (version 16.9.3)
+ - Visual C++ 2017 (version 15.9.34)
  - Visual C++ 2015 (version 14.0.25431.01)
  - Visual C++ 2013 (version 12.0.40629.00)
  - Visual C++ 2012 (version 11.0.61219.00)
  - Visual C++ 2010 (version 10.0.30319.1)
- - MinGW-w64 (GCC 10.2.0)
+ - MinGW-w64 (GCC 8.1.0)
  - MinGW (GCC 9.2.0)
 
 
