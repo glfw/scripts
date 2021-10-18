@@ -43,7 +43,7 @@ if ! ( git archive --remote "${dir}/.git" ${tag} | tar x -C ${tag}/${srcdir} ); 
     exit 1
 fi
 
-rm -f ${tag}/${srcdir}/.[a-z]*
+rm -rf ${tag}/${srcdir}/.[a-z]*
 
 if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs; then
     echo "${tag}: failed to configure project"
