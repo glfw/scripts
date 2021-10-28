@@ -181,6 +181,28 @@ set targetdir=glfw-%tag%.bin.WIN64\lib-static-ucrt
 call :build_vs_dll_mt
 endlocal
 
+rem Visual C++ 2022 32-bit
+setlocal
+set generator=Visual Studio 17 2022
+set arch=Win32
+set toolset=v143
+set targetdir=glfw-%tag%.bin.WIN32\lib-vc2022
+call :build_vs_static
+call :build_vs_static_mt
+call :build_vs_dll
+endlocal
+
+rem Visual C++ 2022 64-bit
+setlocal
+set generator=Visual Studio 17 2022
+set arch=x64
+set toolset=v143
+set targetdir=glfw-%tag%.bin.WIN64\lib-vc2022
+call :build_vs_static
+call :build_vs_static_mt
+call :build_vs_dll
+endlocal
+
 endlocal
 exit /b 0
 

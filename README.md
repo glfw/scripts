@@ -15,6 +15,7 @@ should be expected to have all these dependencies installed.
  - Visual Studio 2017
    - Windows XP support
  - Visual Studio 2019
+ - Visual Studio 2022
  - MinGW
  - Cygwin
    - mingw64-i686-gcc-core
