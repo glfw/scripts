@@ -17,9 +17,9 @@ should be expected to have all these dependencies installed.
  - Visual Studio 2019
  - Visual Studio 2022
  - MinGW
+ - MinGW-w64 Win32 i686
+ - MinGW-w64 Win32 x86\_64
  - Cygwin
-   - mingw64-i686-gcc-core
-   - mingw64-x86\_64-gcc-core
    - cmake
    - make
 
