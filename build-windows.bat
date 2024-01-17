@@ -15,15 +15,6 @@ if "%tag%" EQU "" (
 
 set noextra=-DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
 
-rem MinGW 32-bit
-setlocal
-path C:\MinGW\bin;%PATH%
-set toolchain=i686
-set targetdir=glfw-%tag%.bin.WIN32/lib-mingw
-call :build_mingw_static
-call :build_mingw_dll
-endlocal
-
 rem MinGW-w64 32-bit
 setlocal
 path C:\Program Files (x86)\mingw-w64\i686-8.1.0-win32-dwarf-rt_v6-rev0\mingw32\bin;%PATH%
