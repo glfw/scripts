@@ -131,7 +131,6 @@ Binaries for the following compilers are included
  - Visual C++ 2015 (built with 14.0.25431.01)
  - Visual C++ 2013 (built with 12.0.40629.00)
  - Visual C++ 2012 (built with 11.0.61219.00)
- - Visual C++ 2010 (built with 10.0.30319.1)
  - MinGW-w64 (built with GCC 8.1.0)
  - MinGW (built with GCC 9.2.0)
 
