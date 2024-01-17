@@ -115,6 +115,7 @@ cat > ${tag}/${macdir}/README.md <<EOF
 This archive contains documentation, headers and pre-compiled static and dynamic
 libraries for GLFW ${tag}, targeting macOS 10.8 and later.  Both Intel
 (x86\_64), Apple Silicon (arm64) and Universal binaries are provided.
+
 EOF
 
 cat > ${tag}/${w32dir}/README.md <<EOF
@@ -186,6 +187,7 @@ To use GLFW as a static library, link against the \`libglfw3.a\` file for your
 environment.  The other files in the same directory are not needed.
 
 The library is built in release mode and do not contain debug information.
+
 EOF
 
 cat > ${tag}/${w64dir}/README.md <<EOF
@@ -257,6 +259,7 @@ To use GLFW as a static library, link against the \`libglfw3.a\` file for your
 environment.  The other files in the same directory are not needed.
 
 The library is built in release mode and do not contain debug information.
+
 EOF
 
 cp -R ${tag}/build/docs/docs/html ${tag}/${srcdir}/docs/
