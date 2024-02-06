@@ -133,11 +133,23 @@ Binaries for the following compilers are included
  - Visual C++ 2013 (built with 12.0.40629.00)
  - MinGW-w64 (built with GCC 8.1.0)
 
+Binaries for Visual C++ 2010 and 2012 are no longer included.  These versions
+are no longer supported by Microsoft and should not be used.  This release of
+GLFW can still be compiled with them if necessary, but future releases will drop
+this support.
+
+Binaries for the original MinGW distribution are no longer included.  MinGW
+appears to no longer be maintained and should not be used.  The much more
+capable MinGW-w64 project should be used instead.  This release of GLFW can
+still be compiled with the original MinGW if necessary, but future releases will
+drop this support.
+
 
 ## Binaries for Visual C++
 
 All binaries for Visual C++ 2017 and earlier are compatible with Windows XP, but
-this is not supported by Visual C++ 2019.
+this is not supported by Visual C++ 2019.  This support has been deprecated by
+Microsoft and GLFW will also drop support for Windows XP in a future release.
 
 ### GLFW as a DLL
 
@@ -205,11 +217,16 @@ Binaries for the following compilers are included
  - Visual C++ 2013 (built with 12.0.40629.00)
  - MinGW-w64 (built with GCC 8.1.0)
 
+Binaries for Visual C++ 2012 are no longer included.  This version is no longer
+supported by Microsoft and should not be used.  This release of GLFW can still
+be compiled with it if necessary, but future releases will drop this support.
+
 
 ## Binaries for Visual C++
 
 All binaries for Visual C++ 2017 and earlier are compatible with Windows XP, but
-this is not supported by Visual C++ 2019.
+this is not supported by Visual C++ 2019.  This support has been deprecated by
+Microsoft and GLFW will also drop support for Windows XP in a future release.
 
 ### GLFW as a DLL
 
