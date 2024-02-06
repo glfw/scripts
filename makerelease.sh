@@ -131,7 +131,7 @@ Binaries for the following compilers are included
  - Visual C++ 2017 (built with 15.9.58)
  - Visual C++ 2015 (built with 14.0.25431.01)
  - Visual C++ 2013 (built with 12.0.40629.00)
- - MinGW-w64 (built with GCC 8.1.0)
+ - MinGW-w64 (built with 13.2.0-win32-dwarf-msvcrt)
 
 Binaries for Visual C++ 2010 and 2012 are no longer included.  These versions
 are no longer supported by Microsoft and should not be used.  This release of
@@ -215,7 +215,7 @@ Binaries for the following compilers are included
  - Visual C++ 2017 (built with 15.9.58)
  - Visual C++ 2015 (built with 14.0.25431.01)
  - Visual C++ 2013 (built with 12.0.40629.00)
- - MinGW-w64 (built with GCC 8.1.0)
+ - MinGW-w64 (built with 13.2.0-win32-dwarf-msvcrt)
 
 Binaries for Visual C++ 2012 are no longer included.  This version is no longer
 supported by Microsoft and should not be used.  This release of GLFW can still

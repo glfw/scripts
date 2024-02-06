@@ -17,7 +17,7 @@ set noextra=-DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
 
 rem MinGW-w64 32-bit
 setlocal
-path C:\Program Files (x86)\mingw-w64\i686-8.1.0-win32-dwarf-rt_v6-rev0\mingw32\bin;%PATH%
+path ..\mingw32\bin;%PATH%
 set targetdir=glfw-%tag%.bin.WIN32/lib-mingw-w64
 set toolchain=w64-i686
 call :build_mingw_static
@@ -26,7 +26,7 @@ endlocal
 
 rem MinGW-w64 64-bit
 setlocal
-path C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;%PATH%
+path ..\mingw64\bin;%PATH%
 set targetdir=glfw-%tag%.bin.WIN64/lib-mingw-w64
 set toolchain=w64-x86_64
 call :build_mingw_static
