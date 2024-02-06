@@ -16,9 +16,7 @@ should be expected to have all these dependencies installed.
  - Visual Studio 2022
  - MinGW-w64 i686-win32-dwarf-msvcrt
  - MinGW-w64 x86\_64-win32-dwarf-msvcrt
- - Cygwin
-   - cmake
-   - make
+ - A Unix-y environment with bash and cmake
 
 ## macOS Dependencies
 

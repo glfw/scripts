@@ -45,7 +45,7 @@ fi
 
 rm -rf ${tag}/${srcdir}/.[a-z]*
 
-if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs; then
+if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs -D GLFW_USE_OSMESA=1; then
     echo "${tag}: failed to configure project"
     exit 1
 fi
