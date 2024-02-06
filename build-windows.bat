@@ -42,28 +42,6 @@ call :build_mingw_static
 call :build_mingw_dll
 endlocal
 
-rem Visual C++ 2012 32-bit
-setlocal
-set generator=Visual Studio 11 2012
-set arch=Win32
-set toolset=v110_xp
-set targetdir=glfw-%tag%.bin.WIN32\lib-vc2012
-call :build_vs_static
-call :build_vs_static_mt
-call :build_vs_dll
-endlocal
-
-rem Visual C++ 2012 64-bit
-setlocal
-set generator=Visual Studio 11 2012
-set arch=x64
-set toolset=v110_xp
-set targetdir=glfw-%tag%.bin.WIN64\lib-vc2012
-call :build_vs_static
-call :build_vs_static_mt
-call :build_vs_dll
-endlocal
-
 rem Visual C++ 2013 32-bit
 setlocal
 set generator=Visual Studio 12 2013

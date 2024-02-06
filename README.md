@@ -7,7 +7,6 @@ should be expected to have all these dependencies installed.
 ## Windows Dependencies
 
  - CMake 3.13+
- - Visual Studio 2012
  - Visual Studio 2013
  - Visual Studio 2015
    - Windows XP support
