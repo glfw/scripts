@@ -126,9 +126,9 @@ import libraries and DLLs for GLFW ${tag}.
 
 Binaries for the following compilers are included
 
- - Visual C++ 2022 (built with 17.8.6)
- - Visual C++ 2019 (built with 16.11.33)
- - Visual C++ 2017 (built with 15.9.59)
+ - Visual C++ 2022 (built with 17.9.0)
+ - Visual C++ 2019 (built with 16.11.34)
+ - Visual C++ 2017 (built with 15.9.60)
  - Visual C++ 2015 (built with 14.0.25431.01)
  - Visual C++ 2013 (built with 12.0.40629.00)
  - MinGW-w64 (built with 13.2.0-win32-dwarf-msvcrt)
@@ -210,9 +210,9 @@ import libraries and DLLs for GLFW ${tag}.
 
 Binaries for the following compilers are included
 
- - Visual C++ 2022 (built with 17.8.6)
- - Visual C++ 2019 (built with 16.11.33)
- - Visual C++ 2017 (built with 15.9.59)
+ - Visual C++ 2022 (built with 17.9.0)
+ - Visual C++ 2019 (built with 16.11.34)
+ - Visual C++ 2017 (built with 15.9.60)
  - Visual C++ 2015 (built with 14.0.25431.01)
  - Visual C++ 2013 (built with 12.0.40629.00)
  - MinGW-w64 (built with 13.2.0-win32-dwarf-msvcrt)
