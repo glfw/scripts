@@ -18,6 +18,16 @@ if [ -z "$GLFWVER" ]; then
     exit 1
 fi
 
+build_docs()
+{
+    BUILDDIR="build/docs"
+    cmake -E make_directory $BUILDDIR
+    cmake -S "$GLFWDIR" -B $BUILDDIR -DGLFW_BUILD_COCOA=0
+    cmake --build $BUILDDIR --target docs
+    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER/docs
+    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER.bin.MACOS/docs
+}
+
 build_static()
 {
     BUILDDIR="build/macos-$ARCHNAME-static"
@@ -37,6 +47,9 @@ build_dynamic()
     cmake --build $BUILDDIR
     cmake -E copy $BUILDDIR/src/libglfw.3.dylib $TARGETDIR
 }
+
+# HTML documentation
+build_docs
 
 # macOS x86_64
 ARCHNAME="x86_64"

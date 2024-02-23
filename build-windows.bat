@@ -15,6 +15,11 @@ if "%tag%" EQU "" (
 
 set noextra=-DGLFW_BUILD_TESTS=NO -DGLFW_BUILD_EXAMPLES=NO -DGLFW_BUILD_DOCS=NO
 
+rem HTML documentation
+setlocal
+call :build_docs
+endlocal
+
 rem MinGW-w64 32-bit
 setlocal
 path ..\mingw32\bin;%PATH%
@@ -162,6 +167,17 @@ call :build_vs_dll
 endlocal
 
 endlocal
+exit /b 0
+
+:build_docs
+set CFLAGS=-s -Werror
+set builddir=build\docs
+cmake -E make_directory %builddir%
+cmake -S "%sourcedir%" -B %builddir% -DGLFW_BUILD_WIN32=0 -DDOXYGEN_EXECUTABLE=..\doxygen\doxygen.exe
+cmake --build %builddir% --target docs
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%\docs
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN32\docs
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN64\docs
 exit /b 0
 
 :build_mingw_static

@@ -45,16 +45,6 @@ fi
 
 rm -rf ${tag}/${srcdir}/.[a-z]*
 
-if ! cmake -S ${tag}/${srcdir} -B ${tag}/build/docs -D GLFW_USE_OSMESA=1; then
-    echo "${tag}: failed to configure project"
-    exit 1
-fi
-
-if ! cmake --build ${tag}/build/docs --target docs; then
-    echo "${tag}: failed to build documentation"
-    exit 1
-fi
-
 cp build-macos.sh build-windows.bat ${tag}/
 
 cat > ${tag}/makepackages.sh <<EOF
@@ -279,20 +269,15 @@ The library is built in release mode and do not contain debug information.
 
 EOF
 
-cp -R ${tag}/build/docs/docs/html ${tag}/${srcdir}/docs/
-
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w32dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w32dir}/
-cp -R ${tag}/build/docs/docs/html ${tag}/${w32dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${w64dir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${w64dir}/
-cp -R ${tag}/build/docs/docs/html ${tag}/${w64dir}/docs/
 
 cp ${tag}/${srcdir}/include/GLFW/glfw3.h ${tag}/${macdir}/include/GLFW/
 cp ${tag}/${srcdir}/include/GLFW/glfw3native.h ${tag}/${macdir}/include/GLFW/
 cp ${tag}/${srcdir}/LICENSE.md ${tag}/${macdir}/
-cp -R ${tag}/build/docs/docs/html ${tag}/${macdir}/docs/
 
