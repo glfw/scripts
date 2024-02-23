@@ -175,9 +175,9 @@ set builddir=build\docs
 cmake -E make_directory %builddir%
 cmake -S "%sourcedir%" -B %builddir% -DGLFW_BUILD_WIN32=0 -DDOXYGEN_EXECUTABLE=..\doxygen\doxygen.exe
 cmake --build %builddir% --target docs
-cmake -E copy_directory %builddir%\docs\html glfw-%tag%\docs
-cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN32\docs
-cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN64\docs
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%\docs\html
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN32\docs\html
+cmake -E copy_directory %builddir%\docs\html glfw-%tag%.bin.WIN64\docs\html
 exit /b 0
 
 :build_mingw_static

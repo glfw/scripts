@@ -24,8 +24,8 @@ build_docs()
     cmake -E make_directory $BUILDDIR
     cmake -S "$GLFWDIR" -B $BUILDDIR -DGLFW_BUILD_COCOA=0
     cmake --build $BUILDDIR --target docs
-    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER/docs
-    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER.bin.MACOS/docs
+    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER/docs/html
+    cmake -E copy_directory $BUILDDIR/docs/html glfw-$GLFWVER.bin.MACOS/docs/html
 }
 
 build_static()
